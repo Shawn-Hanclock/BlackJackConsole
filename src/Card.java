@@ -1,33 +1,21 @@
 public class Card
 {
-    //instance variables
-    private String name;
-    private int cardsValue;
+    private Suit suit;
+    private Value value;
 
-    public Card(String name)
+    public Card(Suit suit, Value value)
     {
-        this.name = name;
-        this.cardsValue = 0;
+        this.value = value;
+        this.suit = suit;
     }
 
-    //getters
-    public String getName()
+    public String toString()
     {
-        return name;
-    }
-    public int getCardsValue()
-    {
-        return cardsValue;
+        return this.suit + "-" + this.value + "\n";
     }
 
-    //setters
-    public void setName(String name)
+    public Value getValue()
     {
-        this.name = name;
-    }
-
-    public void setCardsValue(int cardsValue)
-    {
-        this.cardsValue = cardsValue;
+        return this.value;
     }
 }
