@@ -103,21 +103,57 @@ public class Deck
 
         for(Card card : this.cards)
         {
-            switch(card.getValue())
+            if(card.getValue().equals("TWO"))
             {
-                case TWO -> totalValue += 2;
-                case THREE -> totalValue += 3;
-                case FOUR -> totalValue += 4;
-                case FIVE -> totalValue += 5;
-                case SIX -> totalValue += 6;
-                case SEVEN -> totalValue += 7;
-                case EIGHT -> totalValue += 8;
-                case NINE -> totalValue += 9;
-                case TEN -> totalValue += 10;
-                case JACK -> totalValue += 10;
-                case QUEEN -> totalValue += 10;
-                case KING -> totalValue += 10;
-                case ACE -> aces += 1;
+               totalValue += 2;
+            }
+            if(card.getValue().equals("THREE"))
+            {
+                totalValue += 3;
+            }
+            if(card.getValue().equals("FOUR"))
+            {
+                totalValue += 4;
+            }
+            if(card.getValue().equals("FIVE"))
+            {
+                totalValue += 5;
+            }
+            if(card.getValue().equals("SIX"))
+            {
+                totalValue += 6;
+            }
+            if(card.getValue().equals("SEVEN"))
+            {
+                totalValue += 7;
+            }
+            if(card.getValue().equals("EIGHT"))
+            {
+                totalValue += 8;
+            }
+            if(card.getValue().equals("NINE"))
+            {
+                totalValue += 9;
+            }
+            if(card.getValue().equals("TEN"))
+            {
+                totalValue += 10;
+            }
+            if(card.getValue().equals("JACK"))
+            {
+                totalValue += 10;
+            }
+            if(card.getValue().equals("QUEEN"))
+            {
+                totalValue += 10;
+            }
+            if(card.getValue().equals("KING"))
+            {
+                totalValue += 10;
+            }
+            if(card.getValue().equals("ACE"))
+            {
+                aces += 1;
             }
         }
 
