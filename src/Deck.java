@@ -44,6 +44,7 @@ public class Deck implements Comparable
         this.cards = tempDeck;
     }
 
+       //formated string tostring
     public String toString()
     {
         String cardsList = "\n";
@@ -54,51 +55,59 @@ public class Deck implements Comparable
         return cardsList;
     }
 
+       //removes a card in a certain place in a hand
     public void removeCard(int i)
     {
         this.cards.remove(i);
-    }
+    }//end of remove card
 
+    //gets a card at a place in a hand
     public Card getCard(int i)
     {
         return this.cards.get(i);
-    }
+    }//end of get card
 
+    //adds a card
     public void addCard(Card addCard)
     {
         this.cards.add(addCard);
-    }
+    }//end of addcard
 
     //draw from the deck
     public void draw(Deck inputDeck)
     {
       this.cards.add(inputDeck.getCard(0));
       inputDeck.removeCard(0);
-    }
+    }//end of draw method that draws cards from a given deck
 
     public int deckSize()
     {
       return this.cards.size();
-    }
+    }//end of deckSize
 
+       //moves all the cards of one deck to another
     public void moveAllToDeck(Deck moveTo)
     {
         int thisDeckSize = this.cards.size();
 
+        //loops for deck size
         for(int i = 0; i < thisDeckSize; i++)
         {
             moveTo.addCard(this.getCard(i));
         }
+        //loops for the deckSize
         for(int i = 0; i < thisDeckSize; i++)
         {
             this.removeCard(0);
         }
-    }
+    }//end of moveall to deck
 
+    //calculates the total value of a hand
     public int deckTotalVal()
     {
       int totalVal = 0;
       int acesTotal = 0;
+      //loops through all card objects in hand
       for(Card cardCurrent : this.cards)
       {
         //String transverseStr = cardCurrent.getValue());
@@ -128,7 +137,8 @@ public class Deck implements Comparable
         totalVal += 10;
         if(cardCurrent.toValue().equals(Value.ACE.toString())) 
         acesTotal += 1;
-      }
+      }//end of for each loop
+      //loops for each number of aces in a hand
       for(int i = 0; i < acesTotal; i++)
       {
         if(totalVal > 10)
@@ -139,21 +149,22 @@ public class Deck implements Comparable
         {
           totalVal += 11;
         }
-      }
+      }//end of loop
       return totalVal;
-    }
+    }//end of deckTotalVal
     
   @Override
-    public int compareTo(Object dog) {
+    public int compareTo(Object card) 
+    {
         int output = 0;
-        if(this.cards.size() < ((Deck)dog).deckSize())
+        if(this.cards.size() < ((Deck)card).deckSize())
         {
             output = -1;
-        }
-        else if(this.cards.size() > ((Deck)dog).deckSize())
+        }//end of if
+        else if(this.cards.size() > ((Deck)card).deckSize())
         {
             output = 1;
-        }
+        }//end of else if
         return output;
-    }
-}
+    }//end of compareto
+}//end of deck class
