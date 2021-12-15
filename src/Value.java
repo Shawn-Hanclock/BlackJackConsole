@@ -5,5 +5,5 @@ public enum Value
 
   Value(String value){
     this.value = value;
-  }
-}
+  }//returns the value as a string instead of an enum value
+}//end of enum value
