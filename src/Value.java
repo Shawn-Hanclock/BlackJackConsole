@@ -1,4 +1,9 @@
 public enum Value
 {
-    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+  TWO("TWO"), THREE("THREE"), FOUR("FOUR"), FIVE("FIVE"), SIX("SIX"), SEVEN("SEVEN"), EIGHT("EIGHT"), NINE("NINE"), TEN("TEN"), JACK("JACK"), QUEEN("QUEEN"), KING("KING"), ACE("ACE");
+    private String value;
+
+  Value(String value){
+    this.value = value;
+  }
 }
