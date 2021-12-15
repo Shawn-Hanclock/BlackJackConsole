@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck
+public class Deck implements Comparable
 {
     //instance variables
     private ArrayList<Card> cards;
@@ -32,7 +32,7 @@ public class Deck
 
         Random random = new Random();
         int randIndex = 0;
-        int deckSize = cards.size();
+        int deckSize = this.cards.size();
         for(int i = 0; i < deckSize; i++)
         {
             randIndex = random.nextInt((this.cards.size()- 1) + 1);
@@ -46,10 +46,10 @@ public class Deck
 
     public String toString()
     {
-        String cardsList = "";
+        String cardsList = "\n";
         for(Card card : this.cards)
         {
-            cardsList += "\n" + card.toString();
+            cardsList += card.toString() + " ";
         }
         return cardsList;
     }
@@ -72,13 +72,13 @@ public class Deck
     //draw from the deck
     public void draw(Deck inputDeck)
     {
-        this.cards.add(inputDeck.getCard(0));
-        inputDeck.removeCard(0);
+      this.cards.add(inputDeck.getCard(0));
+      inputDeck.removeCard(0);
     }
 
     public int deckSize()
     {
-        return this.cards.size();
+      return this.cards.size();
     }
 
     public void moveAllToDeck(Deck moveTo)
@@ -95,80 +95,65 @@ public class Deck
         }
     }
 
-    //returns total value of cards in deck
-    public int cardsValue()
+    public int deckTotalVal()
     {
-        int totalValue = 0;
-        int aces = 0;
-
-        for(Card card : this.cards)
+      int totalVal = 0;
+      int acesTotal = 0;
+      for(Card cardCurrent : this.cards)
+      {
+        //String transverseStr = cardCurrent.getValue());
+        if(cardCurrent.toValue().equals(Value.TWO.toString())) 
+        totalVal += 2;
+        if(cardCurrent.toValue().equals(Value.THREE.toString())) 
+        totalVal += 3;
+        if(cardCurrent.toValue().equals(Value.FOUR.toString())) 
+        totalVal += 4;
+        if(cardCurrent.toValue().equals(Value.FIVE.toString())) 
+        totalVal += 5;
+        if(cardCurrent.toValue().equals(Value.SIX.toString())) 
+        totalVal += 6;
+        if(cardCurrent.toValue().equals(Value.SEVEN.toString())) 
+        totalVal += 7;
+        if(cardCurrent.toValue().equals(Value.EIGHT.toString())) 
+        totalVal += 8;
+        if(cardCurrent.toValue().equals(Value.NINE.toString())) 
+        totalVal += 9;
+        if(cardCurrent.toValue().equals(Value.TEN.toString())) 
+        totalVal += 10;
+        if(cardCurrent.toValue().equals(Value.JACK.toString())) 
+        totalVal += 10;
+        if(cardCurrent.toValue().equals(Value.QUEEN.toString())) 
+        totalVal += 10;
+        if(cardCurrent.toValue().equals(Value.KING.toString())) 
+        totalVal += 10;
+        if(cardCurrent.toValue().equals(Value.ACE.toString())) 
+        acesTotal += 1;
+      }
+      for(int i = 0; i < acesTotal; i++)
+      {
+        if(totalVal > 10)
         {
-            if(card.getValue().equals("TWO"))
-            {
-               totalValue += 2;
-            }
-            if(card.getValue().equals("THREE"))
-            {
-                totalValue += 3;
-            }
-            if(card.getValue().equals("FOUR"))
-            {
-                totalValue += 4;
-            }
-            if(card.getValue().equals("FIVE"))
-            {
-                totalValue += 5;
-            }
-            if(card.getValue().equals("SIX"))
-            {
-                totalValue += 6;
-            }
-            if(card.getValue().equals("SEVEN"))
-            {
-                totalValue += 7;
-            }
-            if(card.getValue().equals("EIGHT"))
-            {
-                totalValue += 8;
-            }
-            if(card.getValue().equals("NINE"))
-            {
-                totalValue += 9;
-            }
-            if(card.getValue().equals("TEN"))
-            {
-                totalValue += 10;
-            }
-            if(card.getValue().equals("JACK"))
-            {
-                totalValue += 10;
-            }
-            if(card.getValue().equals("QUEEN"))
-            {
-                totalValue += 10;
-            }
-            if(card.getValue().equals("KING"))
-            {
-                totalValue += 10;
-            }
-            if(card.getValue().equals("ACE"))
-            {
-                aces += 1;
-            }
+          totalVal += 1;
         }
-
-        for(int i = 0; i < aces; i++)
+        else
         {
-            if(totalValue > 10)
-            {
-                totalValue += 1;
-            }
-            else
-            {
-                totalValue += 11;
-            }
+          totalVal += 11;
         }
-
-        return totalValue;
+      }
+      return totalVal;
+    }
+    
+  @Override
+    public int compareTo(Object dog) {
+        int output = 0;
+        if(this.cards.size() < ((Deck)dog).deckSize())
+        {
+            output = -1;
+        }
+        else if(this.cards.size() > ((Deck)dog).deckSize())
+        {
+            output = 1;
+        }
+        return output;
     }
 }
